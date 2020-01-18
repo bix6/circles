@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TODO:Description" />
+    <title>Circles</title>
+    <link rel="icon" href="favicon.ico" />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+        <form>
+            <ul>
+                <li>
+                    <label for="numCircles">Num Circles</label>
+                    <input type="number" id="numCircles" name="numCircles" min="1" max="5000" value="50" />
+                </li>
+
+                <li>
+                    <label for="minRadius">Min Radius</label>
+                    <input type="number" id="minRadius" name="minRadius" min="1" max="5000" value="1" />
+                    <label for="maxRadius">Max Radius</label>
+                    <input type="number" id="maxRadius" name="maxRadius" min="1" max="5000" value="500" />
+                </li>
+            </ul>
+
+            <label for="minSpeed">Min Speed</label>
+            <input type="number" id="minSpeed" name="minSpeed" min="0" max="100" value="0" step=".01"/>
+            <label for="maxSpeed">Max Speed</label>
+            <input type="number" id="maxSpeed" name="maxSpeed" min="0" max="100" value=".5" step=".01" />
+
+            <label for="minLineWidth">Min Line Width</label>
+            <input type="number" id="minLineWidth" name="minLineWidth" min="0" max="5000" value="0" />
+            <label for="maxLineWidth">Max Line Width</label>
+            <input type="number" id="maxLineWidth" name="maxLineWidth" min="0" max="5000" value="500" />
+
+            <label for="minDegrees">Min Start Degrees</label>
+            <input type="number" id="minDegrees" name="minDegrees" min="0" max="360" value="0" />
+            <label for="maxDegrees">Max Start Degrees</label>
+            <input type="number" id="maxDegrees" name="maxDegrees" min="0" max="360" value="360" />
+
+            <label for="minX">Min X</label>
+            <input type="number" id="minX" name="minX" min="0" max="5000" value="600" />
+            <label for="maxX">Max X</label>
+            <input type="number" id="maxX" name="maxX" min="0" max="5000" value="600" />
+
+            <label for="minY">Min Y</label>
+            <input type="number" id="minY" name="minY" min="0" max="5000" value="500" />
+            <label for="maxY">Max Y</label>
+            <input type="number" id="maxY" name="maxY" min="0" max="5000" value="500" />
+
+            <label for="minRed">Min Red</label>
+            <input type="number" id="minRed" name="minRed" min="0" max="255" value="0" />
+            <label for="maxRed">Max Red</label>
+            <input type="number" id="maxRed" name="maxRed" min="0" max="255" value="255" />
+
+            <label for="minGreen">Min Green</label>
+            <input type="number" id="minGreen" name="minGreen" min="0" max="255" value="0" />
+            <label for="maxGreen">Max Green</label>
+            <input type="number" id="maxGreen" name="maxGreen" min="0" max="255" value="255" />
+
+            <label for="minBlue">Min Blue</label>
+            <input type="number" id="minBlue" name="minBlue" min="0" max="255" value="0" />
+            <label for="maxBlue">Max Blue</label>
+            <input type="number" id="maxBlue" name="maxBlue" min="0" max="255" value="255" />
+
+            <button type="submit" onClick="init()">Start</button>
+        </form>
+
+        <!-- Default 300 x 150 -->
+		<canvas id="canvas" width="300" height="150"> 
+			Error displaying canvas.
+		</canvas>
+	</div>
+	
+    <script src="index.js"></script> 
+</body>
+</html>

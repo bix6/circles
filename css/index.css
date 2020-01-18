@@ -1,0 +1,48 @@
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    background-color: black;
+}
+
+form {
+    color: white;
+    font-size: 1.6rem;
+    position: fixed;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label {
+    font-family: serif;
+    font-size: 1.8rem;
+    flex: 2 2 auto;
+}
+
+input {
+    font-size: 1.6rem;
+    flex: 1 1 auto;
+    max-width: 100px;
+}
+
+button {
+
+}
+
+#canvas {
+    flex-grow: 1;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
