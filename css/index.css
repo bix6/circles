@@ -11,33 +11,75 @@ html {
     width: 100vw;
     height: 100vh;
     display: flex;
-
     background-color: black;
 }
 
 form {
     color: white;
+    background-color: black;
     font-size: 1.6rem;
     position: fixed;
-    background-color: black;
+    top: 0;
+    left: 0;
+}
+
+ul {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    padding: .5rem;
+}
+
+li {
+    border-radius: 5px;
+    margin: 0rem;
+    padding: .8rem;
+    min-width: 170px;
 }
 
 label {
     font-family: serif;
     font-size: 1.8rem;
-    flex: 2 2 auto;
+    color: white;
+    display: block;
+    min-width: 150px;
+    text-align: center;
+    margin-bottom: .5rem;
+    
 }
 
 input {
     font-size: 1.6rem;
-    flex: 1 1 auto;
+    font-weight: 600;
     max-width: 100px;
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    margin: 0 auto;
+    display: block;
 }
 
 button {
+    font-family: monospace;
+    font-size: 1.8rem;
+    color: white;
+    background-color: dodgerblue;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: .5rem;
+    display: block;
+    margin: .5rem auto;
+}
 
+#show-controls {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}
+
+.hidden {
+    display: none;
 }
 
 #canvas {

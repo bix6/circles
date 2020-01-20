@@ -202,6 +202,13 @@ function initCircles() {
     }
 
     console.log(global_circles);
+
+    // hide controls
+    document.getElementById("controls").classList.add("hidden");
+}
+
+function showControls() {
+    document.getElementById("controls").classList.remove("hidden");
 }
 
 // initialize everything, start drawing
