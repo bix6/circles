@@ -57,7 +57,7 @@ class Circle {
     adjustColor() {
         // get channel to adjust followed by adjustment amount
         const colorInt = getRandomInt(0, 3);
-        const colorAdj = getRandomInt(global_color_step.min, global_color_step.max);
+        const colorAdj = getRandomFloat(global_color_step.min, global_color_step.max);
 
         // adjust color
         this.color[colorInt] += colorAdj * this.colorMultipliers[colorInt];
