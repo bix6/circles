@@ -60,7 +60,9 @@ class Circle {
         const colorAdj = getRandomFloat(global_color_step.min, global_color_step.max);
 
         // adjust color
-        this.color[colorInt] += colorAdj * this.colorMultipliers[colorInt];
+        // round it to 2 decimals
+        this.color[colorInt] = parseFloat((this.color[colorInt] 
+            + (colorAdj * this.colorMultipliers[colorInt])).toFixed(2));
 
         // reverse direction once an end is reached by changing the dir
         if (this.color[colorInt] < global_color_min[colorInt]) {
@@ -91,8 +93,10 @@ function getRandomInt(min, max) {
 }
 
 // gets a random Float from [min, max)
+// toFixed(2) converts it to a string and then keeps two decimals
+// then convert back to a float
 function getRandomFloat(min, max) {
-    return Math.random()*(max-min) + min;
+    return parseFloat((Math.random()*(max-min) + min).toFixed(2));
 }
 
 // adjust circles and then draw them
@@ -113,6 +117,7 @@ function clear(context) {
 
 // draw on the canvas / context
 function draw() {
+    console.log('draw');
     // get the canvas
     const canvas = document.getElementById('canvas')
 
@@ -199,7 +204,7 @@ function initCircles() {
                 getRandomInt(values.green.min, values.green.max),
                 getRandomInt(values.blue.min, values.blue.max)],
             /*speed - rounded to 2 decimals*/
-            parseFloat(getRandomFloat(values.speed.min, values.speed.max).toFixed(2)), 
+            getRandomFloat(values.speed.min, values.speed.max), 
             /*lineWidth*/
             getRandomInt(values.lineWidth.min, values.lineWidth.max), 
             /*degrees = startLoc*/

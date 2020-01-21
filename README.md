@@ -16,6 +16,8 @@ I programmed this for fun while listening to Mac Miller's new Circles album. Thi
     - what impact does not clearing the canvas have (I did add a clear inside init, is this needed or is a new context created?)
     - should I be rendering on an off screen canvas? Since every arc changes every time I'm not sure this would add a benefit?
     - should I use multiple canvas layers? I saw this talked about but I'm not sure if it would impact my program
+- How is array colorMultipliers being set (all should be 1, 1, 1) and colors being set to floats (I'm requesting ints) in init()? Stepped through and it appears to be setting correctly so maybe the console log is happening after the animation has already happened a few times? I tried console logging from draw and it doesn't appear until after the array is init and printed so pretty confused here.
+- Colors seem to fade to lighter or darker together. Not sure if this is the canvas overloading or something else.
 
 ## TODO
 - enable scroll on menu and add hide button
