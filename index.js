@@ -1,12 +1,15 @@
 "use strict";
 
-// globals
-const GLOBAL_CANVAS_WIDTH = document.body.clientWidth;
-const GLOBAL_CANVAS_HEIGHT = document.body.clientHeight;
+//bix6
 
-let global_circles = [];
-let global_color_min = [];
-let global_color_max = [];
+// globals
+let global_canvas_width = document.body.clientWidth;
+let global_canvas_height = document.body.clientHeight;
+
+let global_circles = []; // holds all the Circle's we create
+let global_color_min = []; // min values for each RGB channel
+let global_color_max = []; // max values for each RGB channel
+let global_color_step = {}; // min and max values for color step
 
 
 // circle class - we're going to draw a bunch of circles (technically arcs)
@@ -52,8 +55,9 @@ class Circle {
     // and then adjusts it by a random value
     // reverses direction if bounds (0, 255) are exceeded
     adjustColor() {
+        // get channel to adjust followed by adjustment amount
         const colorInt = getRandomInt(0, 3);
-        const colorAdj = getRandomInt(1, 5);
+        const colorAdj = getRandomInt(global_color_step.min, global_color_step.max);
 
         // adjust color
         this.color[colorInt] += colorAdj * this.colorMultipliers[colorInt];
@@ -82,15 +86,13 @@ class Circle {
 }
 
 // gets a random Int from [min, max)
-// TODO confirm bounds
 function getRandomInt(min, max) {
-    return min === max ? min : Math.floor(Math.random()*(max-min)) + min;
+    return Math.floor(Math.random()*(max-min)) + min;
 }
 
 // gets a random Float from [min, max)
-// TODO confirm bounds
 function getRandomFloat(min, max) {
-    return min === max ? min : Math.random()*(max-min) + min;
+    return Math.random()*(max-min) + min;
 }
 
 // adjust circles and then draw them
@@ -103,8 +105,10 @@ function drawCircles(circles, context){
 }
 
 // clear the canvas / context
+// clearRect sets pixels to transparent black so I'm using a fillRect with black instead
 function clear(context) {
-    context.clearRect(0, 0, GLOBAL_CANVAS_WIDTH, GLOBAL_CANVAS_WIDTH);
+    context.fillStyle = '#000';
+    context.fillRect(0, 0, global_canvas_width, global_canvas_width);
 }
 
 // draw on the canvas / context
@@ -113,7 +117,7 @@ function draw() {
     const canvas = document.getElementById('canvas')
 
     // get context, we draw on this
-    var context = canvas.getContext('2d');
+    var context = canvas.getContext('2d', { alpha: false });
 
     // clear
     // clear(context);
@@ -164,6 +168,10 @@ function getValues() {
         blue: {
             min: parseInt(document.getElementById('minBlue').value),
             max: parseInt(document.getElementById('maxBlue').value)
+        },
+        colorStep: {
+            min: parseFloat(document.getElementById('minColorStep').value),
+            max: parseFloat(document.getElementById('maxColorStep').value)
         }
     }
 }
@@ -178,6 +186,8 @@ function initCircles() {
     global_circles = [];
     global_color_min = [values.red.min, values.green.min, values.blue.min];
     global_color_max = [values.red.max, values.green.max, values.blue.max];
+    global_color_step.min = values.colorStep.min;
+    global_color_step.max = values.colorStep.max;
 
     // create and push new circles to global array
     for (let i = 0; i < values.numCircles; i++) {
@@ -211,21 +221,45 @@ function showControls() {
     document.getElementById("controls").classList.remove("hidden");
 }
 
+// adjust default radius, x and y based on browser dimensions
+// called when the body loads
+function adjustDefaults() {
+    const halfX = Math.floor(global_canvas_width / 2);
+    const halfY = Math.floor(global_canvas_height / 2);
+
+    // set maxRadius to larger of height or width and then divide by 2
+    document.getElementById("maxRadius").value = global_canvas_height > global_canvas_width 
+        ? halfY : halfX;
+
+    // center x
+    document.getElementById('minX').value = halfX;
+    document.getElementById('maxX').value = halfX;
+
+    // center y
+    document.getElementById('minY').value = halfY;
+    document.getElementById('maxY').value = halfY;
+}
+
 // initialize everything, start drawing
 function init() {
     event.preventDefault();
     console.log('init...');
 
-    // get canvas and scale it to 100vw x 100vh
+    // get canvas and scale it to updated 100vw x 100vh
     // otherwise drawing will be distorted
+    global_canvas_width = document.body.clientWidth;
+    global_canvas_height = document.body.clientHeight;
     var canvas = document.getElementById('canvas');
-    canvas.width = GLOBAL_CANVAS_WIDTH;
-    canvas.height = GLOBAL_CANVAS_HEIGHT;
+    canvas.width = global_canvas_width;
+    canvas.height = global_canvas_height;
 
     // check that canvas is supported
     if (canvas.getContext) {
         // create circles
         initCircles();
+
+        // clear the canvas
+        clear(canvas.getContext('2d', { alpha: false }));
 
         // setup animation
         window.requestAnimationFrame(draw);

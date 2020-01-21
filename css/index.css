@@ -82,9 +82,9 @@ button {
     display: none;
 }
 
-#canvas {
+canvas {
     flex-grow: 1;
     margin: 10px;
-    background-color: white;
+    background-color: black;
     border-radius: 10px;
 }

@@ -9,7 +9,7 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
 </head>
-<body>
+<body onload="adjustDefaults()">
 	<div class="container">
         <button id="show-controls" onClick="showControls()">Show Controls</button>
 
@@ -36,7 +36,7 @@
                 </li>
                 <li>
                     <label for="maxSpeed">Max Speed</label>
-                    <input type="number" id="maxSpeed" name="maxSpeed" min="0" max="100" value=".5" step=".01" />
+                    <input type="number" id="maxSpeed" name="maxSpeed" min="0" max="100" value=".2" step=".01" />
                 </li>
                 <li>
                     <label for="minLineWidth">Min Line Width</label>
@@ -93,6 +93,14 @@
                 <li>
                     <label for="maxBlue">Max Blue</label>
                     <input type="number" id="maxBlue" name="maxBlue" min="0" max="255" value="255" />
+                </li>
+                <li>
+                    <label for="minColorStep">Min Color Step</label>
+                    <input type="number" id="minColorStep" name="minColorStep" min="0" max="255" value="1" step="0.1"/>
+                </li>
+                <li>
+                    <label for="maxColorStep">Max Color Step</label>
+                    <input type="number" id="maxColorStep" name="maxColorStep" min="0" max="255" value="5" step="0.1"/>
                 </li>
             </ul>
         </form>
