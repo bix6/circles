@@ -4,6 +4,8 @@
 - **Some of the possible configurations can result in strobe-like effects.**
 - This program can easily overload the browser and freeze it.
 
+[Live Site](https://bix6.github.io/circles/)
+
 ## About
 I programmed this for fun while listening to Mac Miller's new Circles album. This was a great opportunity to learn about the Canvas and Classes in JavaScript. I had a lot of fun making this and am really happy with the various effects this tool can create. 
 
