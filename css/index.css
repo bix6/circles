@@ -18,9 +18,11 @@ form {
     color: white;
     background-color: black;
     font-size: 1.6rem;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    overflow: auto;
+    overflow-y: auto;
 }
 
 ul {

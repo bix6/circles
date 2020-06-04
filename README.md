@@ -4,7 +4,7 @@
 - **Some of the possible configurations can result in strobe-like effects.**
 - This program can easily overload the browser and freeze it.
 
-[Live Site](https://bix6.github.io/circles/)
+## [Live Site](https://bix6.github.io/circles/)
 
 ## About
 I programmed this for fun while listening to Mac Miller's new Circles album. This was a great opportunity to learn about the Canvas and Classes in JavaScript. I had a lot of fun making this and am really happy with the various effects this tool can create. 
@@ -20,8 +20,5 @@ I programmed this for fun while listening to Mac Miller's new Circles album. Thi
     - should I use multiple canvas layers? I saw this talked about but I'm not sure if it would impact my program
 - How is array colorMultipliers being set (all should be 1, 1, 1) and colors being set to floats (I'm requesting ints) in init()? Stepped through and it appears to be setting correctly so maybe the console log is happening after the animation has already happened a few times? I tried console logging from draw and it doesn't appear until after the array is init and printed so pretty confused here.
 - Colors seem to fade to lighter or darker together. Not sure if this is the canvas overloading or something else.
-
-## TODO
-- enable scroll on menu and add hide button
 
 
